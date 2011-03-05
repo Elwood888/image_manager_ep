@@ -52,7 +52,8 @@ echo '
 </div>';
 
 
-// PLUGIN FORM
+// PLUGIN FORM WRAPPER
+////////////////////////////////////////////////////////////////////////////////
 $form = $plugin_root.$plugin.'/pages/settings.inc.php';
 if(file_exists($form))
 {
@@ -93,7 +94,8 @@ if(file_exists($form))
 }
 
 
-// PLUGIN HELP
+// PLUGIN INFO WRAPPER
+////////////////////////////////////////////////////////////////////////////////
 $help = $plugin_root.$plugin.'/pages/help.textile';
 if(file_exists($help))
 {
@@ -110,3 +112,30 @@ if(file_exists($help))
   </div><!-- /rex-addon-output -->
   ';
 }
+
+// JS OPEN LINKS IN NEW WIN DOW VIA CLASS
+////////////////////////////////////////////////////////////////////////////////
+echo '
+<script type="text/javascript">
+// onload
+window.onload = externalLinks;
+
+// http://www.sitepoint.com/article/standards-compliant-world
+function externalLinks()
+{
+ if (!document.getElementsByTagName) return;
+ var anchors = document.getElementsByTagName("a");
+ for (var i=0; i<anchors.length; i++)
+ {
+   var anchor = anchors[i];
+   if (anchor.getAttribute("href"))
+   {
+     if (anchor.getAttribute("class") == "blank" || anchor.getAttribute("class") == "jsopenwin")
+     {
+     anchor.target = "_blank";
+     }
+   }
+ }
+}
+</script>
+';
