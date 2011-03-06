@@ -40,8 +40,9 @@ foreach($im_plugins['status'] as $this_plugin => $status)
 }
 
 
-// OUTPUT
+// INCLUDE PARSER FUNCTION
 ////////////////////////////////////////////////////////////////////////////////
+require_once $REX['INCLUDE_PATH'].'/addons/image_manager/functions/function.rexdev_incparse.inc.php';
 
 
 // PLUGINS NAVI

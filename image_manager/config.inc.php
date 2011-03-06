@@ -11,6 +11,7 @@
  */
 
 $mypage = 'image_manager';
+$Revision = '';
 
 /* Addon Parameter */
 $REX['ADDON']['rxid'][$mypage] = '679';
