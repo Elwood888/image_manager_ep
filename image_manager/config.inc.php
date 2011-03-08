@@ -10,6 +10,7 @@
  * @version svn:$Id$
  */
 
+
 $mypage = 'image_manager';
 $Revision = '';
 
