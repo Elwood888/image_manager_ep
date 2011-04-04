@@ -15,23 +15,33 @@ class rex_effect_img_interlace extends rex_effect_abstract
   function execute()
   {
     global $REX;
-    
+
     switch($this->image->img['format'])
     {
       case 'JPG':
+      case 'JPEG':
         if($this->params['jpg_interlace']=='on')
+        {
           $this->image->img['interlace'] = true;
+        }
+        break;
 
       case 'PNG':
         if($this->params['png_interlace']=='on')
+        {
           $this->image->img['interlace'] = true;
+        }
+        break;
 
       case 'GIF':
         if($this->params['png_interlace']=='on')
+        {
           $this->image->img['interlace'] = true;
+        }
+        break;
 
       default:
-        $this->image->img['interlace'] = false;
+        //$this->image->img['interlace'] = false;
     }
   }
 
