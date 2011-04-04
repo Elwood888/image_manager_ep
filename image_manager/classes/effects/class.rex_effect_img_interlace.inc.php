@@ -1,6 +1,6 @@
 <?php
 /**
-* JPG interlace - ImageManager Effect
+* Image interlace Option - ImageManager Effect
 *
 * @package redaxo4.3
 * @version 0.1
@@ -18,15 +18,15 @@ class rex_effect_img_interlace extends rex_effect_abstract
     
     switch($this->image->img['format'])
     {
-      case 'JPG';
-      if($this->params['jpg_interlace']=='on')
-       $this->image->img['interlace'] = true;
+      case 'JPG':
+        if($this->params['jpg_interlace']=='on')
+          $this->image->img['interlace'] = true;
 
-      case 'PNG';
+      case 'PNG':
         if($this->params['png_interlace']=='on')
           $this->image->img['interlace'] = true;
 
-      case 'GIF';
+      case 'GIF':
         if($this->params['png_interlace']=='on')
           $this->image->img['interlace'] = true;
 

@@ -164,7 +164,13 @@ class rex_image {
 
     if(!$sendfile)
       return FALSE;
-      
+
+    // INTERLACE SWITCH
+    if ($this->img['interlace'])
+    {
+      imageinterlace($this->img['src'], true);
+    }
+
     // output image
     if ($this->img['format'] == 'JPG' || $this->img['format'] == 'JPEG')
     {
