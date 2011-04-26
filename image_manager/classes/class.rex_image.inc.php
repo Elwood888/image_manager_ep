@@ -168,7 +168,7 @@ class rex_image {
     // INTERLACE SWITCH
     if ($this->img['interlace'])
     {
-      imageinterlace($this->img['src'], true);
+      imageinterlace($this->img['src'], 1);
     }
 
     // output image
