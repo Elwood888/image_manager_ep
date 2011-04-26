@@ -101,7 +101,8 @@ class rex_image_cacher
   	  
       // send file
       $image->sendHeader();
-      rex_send_file($cacheFile,'image/'.$image->getFormat());
+      $format = $image->getFormat() == 'JPG' ? 'jpeg' : strtolower($image->getFormat());
+      rex_send_file($cacheFile,'image/'.$format);
 //	  }
 	}
 	

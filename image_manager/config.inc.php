@@ -1,5 +1,4 @@
 <?php
-
 /**
  * image_manager Addon
  *
