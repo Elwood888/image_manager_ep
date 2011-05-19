@@ -99,10 +99,15 @@ class rex_image_cacher
   	    $image->save($cacheFile);
   	  }
   	  
+      $tmp = $REX['USE_GZIP'];
+      $REX['USE_GZIP'] = false;
+      
       // send file
       $image->sendHeader();
       $format = $image->getFormat() == 'JPG' ? 'jpeg' : strtolower($image->getFormat());
       rex_send_file($cacheFile,'image/'.$format);
+      
+      $REX['USE_GZIP'] = $tmp;
 //	  }
 	}
 	
