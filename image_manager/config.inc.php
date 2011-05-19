@@ -7,7 +7,7 @@
  *
  * @package redaxo4
  * @version svn:$Id$
-  */
+ */
 
 
 $mypage = 'image_manager';

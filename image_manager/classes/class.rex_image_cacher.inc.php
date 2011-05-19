@@ -77,38 +77,40 @@ class rex_image_cacher
 	
   /*public*/ function sendImage(/*rex_image*/ $image, $cacheParams, $lastModified = null)
 	{
+    global $REX;
+
     if(!rex_image::isValid($image))
     {
       trigger_error('Given image is not a valid rex_image', E_USER_ERROR);
     }
     
 	  // caching gifs doesn't work
-//	  if($image->getFormat() == 'GIF' && !$image->hasGifSupport())
-//	  {
-//	    $image->prepare();
-//	    $image->send($lastModified);
-//	  }
-//	  else
-//	  {
-	    $cacheFile = $this->getCacheFile($image, $cacheParams);
-	    
-  	  // save image to file
-  	  if(!$this->isCached($image, $cacheParams))
-  	  {
-  	    $image->prepare();
-  	    $image->save($cacheFile);
-  	  }
-  	  
-      $tmp = $REX['USE_GZIP'];
-      $REX['USE_GZIP'] = false;
-      
-      // send file
-      $image->sendHeader();
-      $format = $image->getFormat() == 'JPG' ? 'jpeg' : strtolower($image->getFormat());
-      rex_send_file($cacheFile,'image/'.$format);
-      
-      $REX['USE_GZIP'] = $tmp;
-//	  }
+    //	  if($image->getFormat() == 'GIF' && !$image->hasGifSupport())
+    //	  {
+    //	    $image->prepare();
+    //	    $image->send($lastModified);
+    //	  }
+    //	  else
+    //	  {
+    $cacheFile = $this->getCacheFile($image, $cacheParams);
+    
+    // save image to file
+    if(!$this->isCached($image, $cacheParams))
+    {
+      $image->prepare();
+      $image->save($cacheFile);
+    }
+    
+    $tmp = $REX['USE_GZIP'];
+    $REX['USE_GZIP'] = 'false';
+    
+    // send file
+    $image->sendHeader();
+    $format = $image->getFormat() == 'JPG' ? 'jpeg' : strtolower($image->getFormat());
+    rex_send_file($cacheFile,'image/'.$format,'frontend');
+    
+    $REX['USE_GZIP'] = $tmp;
+    //	  }
 	}
 	
   /*
