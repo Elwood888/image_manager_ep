@@ -121,15 +121,19 @@ if($REX['REDAXO'])
   ); 
   $ccPage->setHref('index.php?page=image_manager&subpage=clear_cache');
   $ccPage->setLinkAttr('onclick', 'return confirm(\''.$I18N->msg('imanager_type_cache_delete').' ?\')');
-  
-  $pluginsPage = new rex_be_page('Plugins', array(
-      'page'=>'image_manager',
-      'subpage'=>'plugins'
-    )
-  ); 
-  $pluginsPage->setHref('index.php?page=image_manager&subpage=plugins');
-  
+
 	$REX['ADDON']['pages'][$mypage] = array (
-	  $descPage, $confPage, $settingsPage, $ccPage, $pluginsPage
+	  $descPage, $confPage, $settingsPage, $ccPage
 	);
+
+  if(file_exists(dirname(__FILE__).'/plugins')!=false && is_dir(dirname(__FILE__).'/plugins')!=false)
+  {
+    $pluginsPage = new rex_be_page('Plugins', array(
+        'page'=>'image_manager',
+        'subpage'=>'plugins'
+      )
+    ); 
+    $pluginsPage->setHref('index.php?page=image_manager&subpage=plugins');
+    $REX['ADDON']['pages'][$mypage][] = $pluginsPage;
+  }
 }
