@@ -42,7 +42,7 @@ foreach($im_plugins['status'] as $this_plugin => $status)
 
 // INCLUDE PARSER FUNCTION
 ////////////////////////////////////////////////////////////////////////////////
-require_once $REX['INCLUDE_PATH'].'/addons/image_manager/functions/function.rexdev_incparse.inc.php';
+require_once $REX['INCLUDE_PATH'].'/addons/image_manager/functions/function.imm_incparse.inc.php';
 
 
 // PLUGINS NAVI
@@ -107,7 +107,7 @@ if(file_exists($help))
    
     <div class="rex-addon-content">
 
-    '.rexdev_incparse($plugin_root,$plugin.'/pages/help.textile','textile',true).'
+    '.imm_incparse($plugin_root,$plugin.'/pages/help.textile','textile',true).'
 
     </div><!-- /rex-addon-content -->
   </div><!-- /rex-addon-output -->

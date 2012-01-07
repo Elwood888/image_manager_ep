@@ -9,9 +9,9 @@
 
 // INCLUDE PARSER FUNCTION
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexdev_incparse'))
+if (!function_exists('imm_incparse'))
 {
-  function rexdev_incparse($root,$source,$parsemode,$return=false)
+  function imm_incparse($root,$source,$parsemode,$return=false)
   {
 
     switch ($parsemode)
@@ -19,7 +19,7 @@ if (!function_exists('rexdev_incparse'))
       case 'textile':
       $source = $root.$source;
       $content = file_get_contents($source);
-      $html = rexdev_textileparser($content,true);
+      $html = imm_textileparser($content,true);
       break;
 
       case 'txt':
@@ -36,7 +36,7 @@ if (!function_exists('rexdev_incparse'))
 
       case 'php':
       $source = $root.$source;
-      $html =  get_include_contents($source);
+      $html =  imm_include_contents($source);
       break;
 
 
@@ -73,9 +73,9 @@ if (!function_exists('rexdev_incparse'))
 
 // TEXTILE PARSER FUNCTION
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexdev_textileparser'))
+if (!function_exists('imm_textileparser'))
 {
-  function rexdev_textileparser($textile,$return=false)
+  function imm_textileparser($textile,$return=false)
   {
     if(OOAddon::isAvailable("textile"))
     {
@@ -123,36 +123,12 @@ if (!function_exists('rexdev_textileparser'))
   }
 }
 
-// ECHO TEXTILE FORMATED STRING
-////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('echotextile'))
-{
-  function echotextile($msg) {
-    global $REX;
-    if(OOAddon::isAvailable("textile")) {
-      if($msg!='') {
-         $msg = str_replace("	","",$msg); // tabs entfernen
-         if (strpos($REX['LANG'],'utf')) {
-          echo rex_a79_textile($msg);
-        } else {
-          echo utf8_decode(rex_a79_textile($msg));
-        }
-      }
-    } else {
-      $fallback = rex_warning('WARNUNG: Das <a href="index.php?page=addon">Textile Addon</a> ist nicht aktiviert! Der Text wird ungeparst angezeigt..');
-      $fallback .= '<pre>'.$msg.'</pre>';
-      echo $fallback;
-    }
-  }
-}
-
-
 
 // http://php.net/manual/de/function.include.php
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('get_include_contents'))
+if (!function_exists('imm_include_contents'))
 {
-  function get_include_contents($filename) {
+  function imm_include_contents($filename) {
     if (is_file($filename)) {
       ob_start();
       include $filename;
