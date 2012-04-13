@@ -4,3 +4,6 @@
 [submodule "plugins/rex_img_dir.image_manager.plugin"]
 	path = plugins/rex_img_dir.image_manager.plugin
 	url = git@github.com:/jdlx/rex_img_dir.image_manager.plugin.git
+[submodule "plugins/referrer_block.image_manager.plugin"]
+	path = plugins/referrer_block.image_manager.plugin
+	url = git@github.com:/jdlx/referrer_block.image_manager.plugin.git
