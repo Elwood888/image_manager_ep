@@ -1,3 +1,6 @@
 [submodule "plugins/_rex_resize.image_manager.plugin"]
 	path = plugins/_rex_resize.image_manager.plugin
 	url = git@github.com:jdlx/_rex_resize.image_manager.plugin.git
+[submodule "plugins/rex_img_dir.image_manager.plugin"]
+	path = plugins/rex_img_dir.image_manager.plugin
+	url = git@github.com:/jdlx/rex_img_dir.image_manager.plugin.git
